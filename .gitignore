@@ -1,0 +1,15 @@
+# OS / 编辑器
+.DS_Store
+.idea/
+.vscode/
+
+# 密钥与环境（MCP 凭证不入库）
+.env
+.env.*
+
+# 构建产物（栈未定，先占位）
+node_modules/
+dist/
+__pycache__/
+target/
+*.log
