@@ -7,9 +7,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # 环境值按分发名（wop-mcp）：PYPI_TOKEN 配置于该 GitHub Environment
-    # （或仓库级 Secrets，环境引用不影响仓库级回退）
-    environment: wop-mcp
+    # PYPI_TOKEN 配置于 org 级 Actions secrets（visibility 覆盖本仓）；
+    # 不引用 environment，避免依赖环境自动创建策略
     permissions:
       # write 仅用于创建 GitHub Release 条目；PyPI 发布走 PYPI_TOKEN，不占 token 权限
       contents: write
