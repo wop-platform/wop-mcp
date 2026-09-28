@@ -25,6 +25,12 @@ dependencies = [
     "wop-python-sdk>=0.1.7",
 ]
 
+[project.urls]
+Homepage = "https://github.com/wop-platform/wop-mcp"
+Repository = "https://github.com/wop-platform/wop-mcp"
+Changelog = "https://github.com/wop-platform/wop-mcp/releases"
+Issues = "https://github.com/wop-platform/wop-mcp/issues"
+
 [project.scripts]
 wop-mcp = "wop_mcp.main:main"
 
