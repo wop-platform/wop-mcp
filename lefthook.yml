@@ -1,0 +1,11 @@
+# 治理对齐 wop-skills：commit-msg 走 commitlint；pre-push 跑覆盖率门禁（≥95% 红线）
+# 激活：npm i -g lefthook && lefthook install
+commit-msg:
+  commands:
+    commitlint:
+      run: npx --yes @commitlint/cli@19 --edit {1}
+
+pre-push:
+  commands:
+    coverage-gate:
+      run: uv run pytest --cov=wop_mcp --cov-fail-under=95 -q
