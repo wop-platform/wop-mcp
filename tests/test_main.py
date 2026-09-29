@@ -177,5 +177,20 @@ def test_gen_key_pair_tool_end_to_end(monkeypatch, tmp_path):
 
 def keypair_result_keys():
     from wop_mcp.keypair import RESULT_KEYS
-
     return RESULT_KEYS
+
+
+def test_cli_help_prints_usage_and_exits_zero(capsys, monkeypatch):
+    monkeypatch.setattr("sys.argv", ["wop-mcp", "--help"])
+    with pytest.raises(SystemExit) as exc:
+        wop_main.main()
+    assert exc.value.code == 0
+    assert "usage: wop-mcp" in capsys.readouterr().out
+
+
+def test_cli_version_prints_version(capsys, monkeypatch):
+    monkeypatch.setattr("sys.argv", ["wop-mcp", "--version"])
+    with pytest.raises(SystemExit) as exc:
+        wop_main.main()
+    assert exc.value.code == 0
+    assert f"wop-mcp {wop_main.__version__}" in capsys.readouterr().out

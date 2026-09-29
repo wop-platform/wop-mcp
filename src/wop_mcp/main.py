@@ -8,6 +8,7 @@
 """
 from __future__ import annotations
 
+import argparse
 from typing import Any, Dict
 
 from mcp.server import MCPServer
@@ -140,7 +141,13 @@ def wop_gen_key_pair(algorithm: str = "RSA2048") -> Dict[str, Any]:
 
 
 def main() -> None:
-    """Server 入口：stdio transport。"""
+    """Server 入口：stdio transport；--help/--version 由 argparse 处理。"""
+    parser = argparse.ArgumentParser(
+        prog="wop-mcp",
+        description="万联易达开放平台（WOP）MCP Server（stdio transport）",
+    )
+    parser.add_argument("--version", action="version", version=f"wop-mcp {__version__}")
+    parser.parse_args()
     mcp.run(transport="stdio")
 
 
